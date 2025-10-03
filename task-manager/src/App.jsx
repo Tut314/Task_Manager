@@ -11,6 +11,9 @@ const Card = ({title}) => {
     console.log(`Card ${title} has been ${hasLiked ? "liked" : "unliked"}`);
   }, [hasLiked]);
 
+  useEffect(() => {
+
+  },[]);
 
   return (
     <div className = "card" onClick={()=>setCount((prevState)=>prevState+1)}>
