@@ -10,7 +10,7 @@ const Card = ({title}) => {
   useEffect(() => {
     console.log(`Card ${title} has been ${hasLiked ? "liked" : "unliked"}`);
   }, [hasLiked]);
-
+  // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
 
   },[]);
