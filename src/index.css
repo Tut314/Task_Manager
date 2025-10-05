@@ -1,2 +1,5 @@
 @import "tailwindcss";
 
+@utility text-gradient {
+    @apply inline-block bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent;
+  }
