@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Search from './components/Search'
 const App = () => {
   return (
     <main>
@@ -8,13 +8,16 @@ const App = () => {
       
       <div className = "wrapper">
         <header>
+          <img src = "./paint.png" alt = "paint" />
+
+
           <h1>
             Find <span className="text-gradient">Movies
 </span> You Love
           </h1>
         </header>
 
-        <p>Search</p>
+        <Search />
 
       </div>
 
