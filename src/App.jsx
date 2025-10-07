@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Search from './components/Search'
 const App = () => {
+  const [searchTerm, setSearchTerm] = useState('I AM BATMAN')
+
   return (
     <main>
 
@@ -17,7 +19,7 @@ const App = () => {
           </h1>
         </header>
 
-        <Search />
+        <Search searchTerm = {searchTerm} setSearchTerm={setSearchTerm}/>
 
       </div>
 
