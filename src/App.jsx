@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Search from './components/Search'
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState('I AM BATMAN')
+  const [searchTerm, setSearchTerm] = useState('')
 
   return (
     <main>
@@ -21,6 +21,7 @@ const App = () => {
 
         <Search searchTerm = {searchTerm} setSearchTerm={setSearchTerm}/>
 
+        <h1>{searchTerm}</h1>
       </div>
 
     </main>
