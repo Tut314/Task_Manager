@@ -92,7 +92,7 @@ const App = () => {
           </ul>
         </section>
 
-        <h1>{searchTerm}</h1>
+        
       </div>
 
     </main>
