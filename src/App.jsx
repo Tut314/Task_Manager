@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Search from './components/Search'
-
+import Spinner from './components/Spinner'
 const API_BASE_URL = "https://itunes.apple.com/search";
 
 const API_OPTIONS = {
