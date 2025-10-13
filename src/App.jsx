@@ -37,6 +37,7 @@ const App = () => {
       console.log("Request:", endpoint);  
 
       const res = await fetch(endpoint, API_OPTIONS);
+
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
       const data = await res.json();
@@ -90,7 +91,8 @@ const App = () => {
 
         <section className = "all-movies">
           <h2>All Movies</h2>
-          {loading ? (<p>Loading...</p>):errorMessage ? (<p className="text-red-500">{errorMessage}</p>) :
+          {loading ? (<Spinner size={24} className="text-gray-700" />
+):errorMessage ? (<p className="text-red-500">{errorMessage}</p>) :
           (<ul className="mt-3 grid gap-2">
             {movies.map((m) => (
               <li key={m.trackId} className="border rounded p-2">
