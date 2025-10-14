@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Search from './components/Search'
 import Spinner from './components/Spinner'
+import MovieCard from './components/MovieCard'
 const API_BASE_URL = "https://itunes.apple.com/search";
 
 const API_OPTIONS = {
@@ -90,14 +91,12 @@ const App = () => {
         </header>
 
         <section className = "all-movies">
-          <h2>All Movies</h2>
+          <h2 className = "mt-[20px]">All Movies</h2>
           {loading ? (<Spinner size={24} className="text-gray-700" />
 ):errorMessage ? (<p className="text-red-500">{errorMessage}</p>) :
           (<ul className="mt-3 grid gap-2">
             {movies.map((m) => (
-              <li key={m.trackId} className="border rounded p-2">
-                {m.trackName}
-              </li>
+              <MovieCard key={m.trackId} movie={m} />
             ))}
           </ul>)}
         </section>
