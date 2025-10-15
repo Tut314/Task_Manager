@@ -96,7 +96,7 @@ const App = () => {
 ):errorMessage ? (<p className="text-red-500">{errorMessage}</p>) :
           (<ul className="mt-3 grid gap-2">
             {movies.map((m) => (
-              <MovieCard key={m.trackId} movie={m} />
+              <MovieCard key={m.trackId} m={m} />
             ))}
           </ul>)}
         </section>
