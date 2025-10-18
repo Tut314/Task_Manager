@@ -42,18 +42,21 @@ const App = () => {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
       const data = await res.json();
-      if(data.res === 'False') {
+      console.log("Result count:", data.resultCount);
+  
+      const results = data.results || [];
+      if (results.length === 0) {
         setMovies([]);
-        setErrorMessage(data.error || "No movies found.");
+        setErrorMessage("No movies found.");
         return;
       }
-      console.log("Result count:", data.resultCount); 
-      setMovies(data.results || []);
+  
+      setMovies(results);
     } catch (err) {
       console.error("Error fetching movies:", err);
       setMovies([]);
       setErrorMessage("Failed to fetch movies. Please try again later.");
-    }finally{
+    } finally {
       setLoading(false);
     }
   };

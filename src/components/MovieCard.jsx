@@ -8,6 +8,8 @@ const MovieCard = ({ m }) => {
         releaseDate,
         primaryGenreName,
         artworkUrl100,
+        previewUrl,
+        trackViewUrl,
     } = m || {};
 
     const year = releaseDate ? new Date(releaseDate).getFullYear() : "";
@@ -43,6 +45,34 @@ const MovieCard = ({ m }) => {
         <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-400">
           {genre}
         </p>
+
+        <div className="mt-2 flex flex-wrap items-center gap-2">
+          {previewUrl && (
+            <a
+              href={previewUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center rounded border px-2 py-1 text-xs text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-white/10"
+            >
+              Preview
+            </a>
+          )}
+
+          {trackViewUrl && (
+            <a
+              href={trackViewUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center rounded bg-indigo-600 px-2 py-1 text-xs text-white hover:bg-indigo-500"
+            >
+              View in iTunes
+            </a>
+          )}
+        </div>
+
+
+
+
       </div>
     </li>
   );
