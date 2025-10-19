@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import Search from './components/Search'
-import Spinner from './components/Spinner'
-import MovieCard from './components/MovieCard'
+import React, { useEffect, useState } from "react";
+import Search from "./components/Search";
+import Spinner from "./components/Spinner";
+import MovieCard from "./components/MovieCard";
 const API_BASE_URL = "https://itunes.apple.com/search";
 
 const API_OPTIONS = {
-  method: 'GET',
-  headers:{
-    accept: 'application/json',
-  }
-}
+  method: "GET",
+  headers: {
+    accept: "application/json",
+  },
+};
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [movies, setMovies] = useState([]);   
+  const [searchTerm, setSearchTerm] = useState("");
+  const [movies, setMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -35,7 +35,7 @@ const App = () => {
       });
 
       const endpoint = `${API_BASE_URL}?${params.toString()}`;
-      console.log("Request:", endpoint);  
+      console.log("Request:", endpoint);
 
       const res = await fetch(endpoint, API_OPTIONS);
 
@@ -43,14 +43,14 @@ const App = () => {
 
       const data = await res.json();
       console.log("Result count:", data.resultCount);
-  
+
       const results = data.results || [];
       if (results.length === 0) {
         setMovies([]);
         setErrorMessage("No movies found.");
         return;
       }
-  
+
       setMovies(results);
     } catch (err) {
       console.error("Error fetching movies:", err);
@@ -60,55 +60,47 @@ const App = () => {
       setLoading(false);
     }
   };
-  
 
-    
-    
-   
-  
-
-  useEffect(() => {
-
-  },[]);
+  useEffect(() => {}, []);
 
   return (
     <main>
+      <div className="pattern" />
 
-      <div className = "pattern" />
-      
-      <div className = "wrapper">
+      <div className="wrapper">
         <header>
-          <img src = "./paint.png" alt = "paint" />
-
+          <img src="./paint.png" alt="paint" />
 
           <h1>
-            Find <span className="text-gradient">Movies
-</span> You Love
+            Find <span className="text-gradient">Movies</span> You Love
           </h1>
 
-
-          <Search searchTerm = {searchTerm} setSearchTerm={setSearchTerm}/>
-          <button onClick={fetchMovies} className="mt-3 px-4 py-2 border rounded">
+          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          <button
+            onClick={fetchMovies}
+            className="mt-3 px-4 py-2 border rounded"
+          >
             Search
           </button>
         </header>
 
-        <section className = "all-movies">
-          <h2 className = "mt-[20px]">All Movies</h2>
-          {loading ? (<Spinner size={24} className="text-gray-700" />
-):errorMessage ? (<p className="text-red-500">{errorMessage}</p>) :
-          (<ul className="mt-3 grid gap-2">
-            {movies.map((m) => (
-              <MovieCard key={m.trackId} m={m} />
-            ))}
-          </ul>)}
+        <section className="all-movies">
+          <h2 className="mt-[20px]">All Movies</h2>
+          {loading ? (
+            <Spinner size={24} className="text-gray-700" />
+          ) : errorMessage ? (
+            <p className="text-red-500">{errorMessage}</p>
+          ) : (
+            <ul className="mt-3 grid gap-2">
+              {movies.map((m) => (
+                <MovieCard key={m.trackId} m={m} />
+              ))}
+            </ul>
+          )}
         </section>
-
-        
       </div>
-
     </main>
-  )
-}
+  );
+};
 
-export default App
+export default App;

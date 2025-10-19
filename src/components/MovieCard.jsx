@@ -1,20 +1,20 @@
 import React from "react";
 
 const MovieCard = ({ m }) => {
+  const {
+    trackId,
+    trackName,
+    releaseDate,
+    primaryGenreName,
+    artworkUrl100,
+    previewUrl,
+    trackViewUrl,
+  } = m || {};
 
-    const {
-        trackId,
-        trackName,
-        releaseDate,
-        primaryGenreName,
-        artworkUrl100,
-        previewUrl,
-        trackViewUrl,
-    } = m || {};
+  const year = releaseDate ? new Date(releaseDate).getFullYear() : "";
+  const genre = primaryGenreName || "Movie";
+  const posterUrl = artworkUrl100?.replace("100x100bb", "300x300bb") || null;
 
-    const year = releaseDate ? new Date(releaseDate).getFullYear() : "";
-    const genre = primaryGenreName || "Movie";
-    const posterUrl = artworkUrl100?.replace("100x100bb", "300x300bb") || null;
   return (
     <li
       key={trackId}
@@ -70,9 +70,7 @@ const MovieCard = ({ m }) => {
           )}
         </div>
 
-
-
-
+        {/* <pre className="mt-1 text-[10px] opacity-60 break-all">{previewUrl} | {trackViewUrl}</pre> */}
       </div>
     </li>
   );
