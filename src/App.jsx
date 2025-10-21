@@ -61,7 +61,7 @@ const App = () => {
     }
   };
 
-  //useEffect(() => {}, []);
+  useEffect(() => {}, []);
 
   return (
     <main>
