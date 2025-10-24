@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Search from "./components/Search";
 import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
+import { updateSearchCount } from "./appwrite";
 const API_BASE_URL = "https://itunes.apple.com/search";
 
 const API_OPTIONS = {
@@ -52,6 +53,7 @@ const App = () => {
       }
 
       setMovies(results);
+      updateSearchCount();
     } catch (err) {
       console.error("Error fetching movies:", err);
       setMovies([]);
