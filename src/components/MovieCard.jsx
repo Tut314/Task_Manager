@@ -2,7 +2,6 @@ import React from "react";
 
 const MovieCard = ({ m }) => {
   const {
-    trackId,
     trackName,
     releaseDate,
     primaryGenreName,
@@ -17,7 +16,6 @@ const MovieCard = ({ m }) => {
 
   return (
     <li
-      key={trackId}
       className="
         group flex items-start gap-3
         rounded-xl border border-gray-200 bg-white/70 p-3

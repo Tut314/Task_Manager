@@ -53,7 +53,9 @@ const App = () => {
       }
 
       setMovies(results);
-      updateSearchCount();
+      if (term && data.results.length > 0) {
+        await updateSearchCount(term, data.results[0]);
+      }
     } catch (err) {
       console.error("Error fetching movies:", err);
       setMovies([]);
@@ -94,9 +96,15 @@ const App = () => {
             <p className="text-red-500">{errorMessage}</p>
           ) : (
             <ul className="mt-3 grid gap-2">
-              {movies.map((m) => (
-                <MovieCard key={m.trackId} m={m} />
-              ))}
+              {movies.map((m, i) => {
+                const key =
+                  m.trackId ??
+                  m.collectionId ??
+                  m.artistId ??
+                  m.trackViewUrl ??
+                  `idx-${i}`;
+                return <MovieCard key={key} m={m} />;
+              })}
             </ul>
           )}
         </section>
